@@ -1,6 +1,6 @@
 #pragma once
 #include "Graph.h"
-
+#include "DepthFirstOrder.h"
 
 class TopologicalSort
 {
@@ -15,7 +15,7 @@ public:
 			for (auto j : G.getAdj(i))
 				degree[j]++;
 		
-		Sort(G, degree, {});
+		Sort(G, std::move(degree), {});
 	}
 
 	const std::vector<std::vector<int>>& getRes() const { return allRes; }
@@ -23,7 +23,7 @@ private:
 	void Sort(const DiGraph& G, std::vector<int> degree, std::vector<int> res)
 	{
 		if (res.size() == G.getV()) {
-			allRes.emplace_back(res);
+			allRes.emplace_back(std::move(res));	//move确实能提高效率
 			return;
 		}
 
@@ -38,9 +38,17 @@ private:
 				auto newRes = res;
 				newRes.push_back(i);
 
-				Sort(G, newDegree, newRes);
+				Sort(G, std::move(newDegree), std::move(newRes));
 			}
 		}
+	}
+};
 
+class TopologicalSort_v2 {
+	DepthFirstOrder order;
+public:
+	TopologicalSort_v2(const DiGraph& G) : order(G) {}
+	const std::list<int>& getTopologicalSort() const {
+		return order.getReversPost(); 
 	}
 };

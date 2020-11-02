@@ -22,7 +22,7 @@ public:
 		for (int i = 0; i < _E; ++i) {
 			int v, w;
 			In >> v >> w;
-			addEdge(v, w);
+			Graph::addEdge(v, w);
 		}	
 	}
 
@@ -33,18 +33,14 @@ public:
 		++E;
 	}
 
-	const std::vector<int>& getAdj(int v) const
-	{
-		return adj[v];
-	}
-
+	const std::vector<int>& getAdj(int v) const { return adj[v]; }
 	int getV() const { return V; }
 	int getE() const { return E; }
 
 	std::string toString()
 	{
 		std::ostringstream ss;
-		int len = std::to_string(V).length();
+		auto len = std::to_string(V).length();
 		ss << "V = " << V << "; E = " << E << "\n";
 		for (int v = 0; v < V; ++v) {
 			ss << std::setw(len) << v << " : ";
@@ -69,7 +65,7 @@ public:
 		for (int i = 0; i < _E; ++i) {
 			int v, w;
 			In >> v >> w;
-			addEdge(v, w);
+			DiGraph::addEdge(v, w);
 		}
 	}
 
@@ -79,7 +75,7 @@ public:
 		++E;
 	}
 
-	DiGraph reverse()
+	DiGraph reverse() const
 	{
 		DiGraph R{ V };
 		for (int v = 0; v < V; ++v)

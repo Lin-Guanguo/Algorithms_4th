@@ -18,6 +18,7 @@ public:
 			bfs(G, v);
 	}
 
+	bool isMarked(int v) const { return marked[v]; }
 private:
 	void bfs(const Graph& G, int v)
 	{

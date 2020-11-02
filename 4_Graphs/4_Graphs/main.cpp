@@ -1,28 +1,39 @@
 #include <fstream>
-
+#include <queue>
 
 #include "Graph.h"
 #include "DFS.h"
 #include "BFS.h"
+#include "CC.h"
+#include "Cycle.h"
+#include "TwoColor.h"
 #include "TopologicalSort.h"
+#include "DepthFirstOrder.h"
+#include "SCC.h"
 
+#include "EWGraph.h"
+#include "LazyPrimMST.h"
+
+#include "RunTimeTest.h"
 
 using namespace std;
 
+
 int main()
 {
-	ifstream in(".\\data\\tinyDG.txt");
-	DiGraph G(in);
 
-	cout << G.toString() << endl << "##################" << endl;
+	ifstream in("..\\datas\\tinyEWG.txt");
+	EWGraph G(in);
 
-	DFSPath dfs(G, { 0,7 });
+	cout << G;
 
-	for (int i = 0; i < G.getV(); ++i) {
-		auto path = dfs.getPath(i);
-		for (auto j : path)
-			cout << j << ", ";
-		cout << endl;
+	LazyPrimMST res(G);
+
+	cout << "\n\n";
+	for (auto e : res.getMst()) {
+		cout << *e << ", ";
 	}
+
+	
 		
 }

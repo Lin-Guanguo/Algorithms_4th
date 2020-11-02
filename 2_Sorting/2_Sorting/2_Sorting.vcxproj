@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BinaryHeap.h" />
+    <ClInclude Include="IndexMinPQ.h" />
     <ClInclude Include="Insertion.h" />
     <ClInclude Include="Merge.h" />
     <ClInclude Include="Quick.h" />

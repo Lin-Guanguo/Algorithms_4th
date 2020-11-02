@@ -18,7 +18,6 @@ public:
 	}
 
 	bool isMarked(int v) const { return marked[v]; }
-
 private:
 	void dfs(const Graph& G, int v)
 	{

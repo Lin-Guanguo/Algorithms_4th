@@ -1,6 +1,7 @@
 #pragma once
 #include <utility>
 #include <vector>
+#include <functional>
 
 class BinaryHeap {
 public:
@@ -47,48 +48,70 @@ public:
 	}
 };
 
-template<typename Item>
-class MaxPQ {
+template<typename Value>
+class MinPQ {
+	std::vector<Value> pq;
+	std::function<bool(const Value& a, const Value& b)> less;
 public:
-	using size_type = typename std::vector<Item>::size_type;	//typename必须要，不然会默认识别为静态成员，而不是类型
-	MaxPQ() :pq(1) {};
-	void insert(const Item& that) {
+	using size_type = typename std::vector<Value>::size_type;
+	MinPQ() :pq(), less(std::less<Value>()) {};
+	MinPQ(const std::function<bool(const Value& a, const Value& b)>& less) : less(less) {};
+
+	void insert(const Value& that) {
 		pq.push_back(that);
 		swim(pq.size() - 1);
 	}
-	const Item& top() {
-		return pq[1];
+
+	const Value& top() {
+		return pq[0];
 	}
+
 	void pop() {
-		using std::swap;
-		swap(pq[1], *--pq.end());
-		pq.pop_back();
-		sink(1);
+		if (pq.size() == 1) {
+			pq.pop_back();
+		}
+		else {
+			using std::swap;
+			swap(pq[0], *--pq.end());
+			pq.pop_back();
+			sink(0);
+		}
 	}
+
 	bool empty() {
-		return pq.size() == 1;
+		return pq.size() == 0;
 	}
+
 	size_type size() {
-		return pq.size() - 1;
+		return pq.size();
 	}
+
 private:
-	std::vector<Item> pq;
 	void swim(size_type k) {
-		using std::swap;
-		while (k > 1 && pq[k / 2] < pq[k]) {
-			swap(pq[k / 2], pq[k]);
-			k /= 2;
+		auto tmp = std::move(pq[k]);
+		auto pri = (k - 1) / 2;
+		while (k > 0 && less(tmp, pq[pri])) {
+			pq[k] = std::move(pq[pri]);
+			k = pri;
+			pri = (k - 1) / 2;
 		}
+		pq[k] = std::move(tmp);
 	}
+
 	void sink(size_type k) {
-		using std::swap;
-		while (2 * k < pq.size()) {										
-			auto j = 2 * k;
-			if (j != pq.size() - 1 && pq[j] < pq[j+1]) { ++j; }	
-			if (pq[j] < pq[k]) { break; }
-			swap(pq[k], pq[j]);
-			k = j;
+		auto tmp = std::move(pq[k]);
+		size_type next = 2 * k + 1;
+		while (next < pq.size()) {
+			if (next != pq.size() - 1 && less(pq[next + 1], pq[next]))
+				++next;
+			if (less(tmp, pq[next]))
+				break;
+			pq[k] = std::move(pq[next]);
+			k = next;
+			next = 2 * k + 1;
 		}
+		pq[k] = std::move(tmp);
 	}
+
 };
 

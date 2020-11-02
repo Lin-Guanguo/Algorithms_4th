@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b181a1bc-fc89-4ac0-b3b7-974506a92bac}</ProjectGuid>
-    <RootNamespace>My5Strings</RootNamespace>
+    <ProjectGuid>{123fa128-f4a8-4a62-8ddc-c9534e8de022}</ProjectGuid>
+    <RootNamespace>My1Fundamentals</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,7 +88,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,7 +116,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,24 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryIO.h" />
-    <ClInclude Include="BoyerMoore.h" />
-    <ClInclude Include="DFS.h" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="Huffman.h" />
-    <ClInclude Include="KMP.h" />
-    <ClInclude Include="LZW.h" />
-    <ClInclude Include="MSD.h" />
-    <ClInclude Include="Quick3String.h" />
-    <ClInclude Include="RabinKarp.h" />
-    <ClInclude Include="Regex.h" />
-    <ClInclude Include="Trie3ST.h" />
-    <ClInclude Include="TrieST.h" />
+    <ClInclude Include="RunTimeTest.h" />
+    <ClInclude Include="SqList.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LSD.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="键索引计数法.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,6 +6,7 @@
 #include "BinaryHeap.h"
 #include "Test.h"
 #include "SortTest.h"
+#include "IndexMinPQ.h"
 
 
 #include <iostream>
@@ -15,54 +16,41 @@
 #include <chrono>
 #include <iterator>
 #include <algorithm>
+#include <queue>
+
+void pq_test();
 
 using namespace std;
 int main() {
-	const int N = 10000;
-	vector<unsigned int> v;
-	v.reserve(N);
-	default_random_engine e(0);
-	uniform_int_distribution<> u(0, 10000);
-
-	MaxPQ<int> pq;
-	for (int i = 0; i < N; ++i) {
-		v.push_back(u(e));
-	}
-	v[0] = 0;	//堆排序需要这句，因为堆排序不排第一个
-
-	for (int i = 0; i < 10; ++i) {
-		auto temp(v);
-		SortTest(temp.begin(), temp.end(), Merge::sort);
-	}
-	cout << endl << endl;
-
-
-	for (int i = 0; i < 10; ++i) {
-		auto temp(v);
-		SortTest(temp.begin(), temp.end(), Quick::sort);
-	}
-	
-	
-	return 0;
+	pq_test();
 }
 
 
-	/*cout << " Selection :\t";
-	for (int i = 0; i < 10; i++) {
-		auto temp(v);
-		int time0 = clock();
-		Selection(temp.begin(), temp.end());
-		int time1 = clock();
-		cout << time1 - time0 << "\t";
-	}
-	cout << endl;
 
-	cout << " Insertion :\t";
-	for (int i = 0; i < 10; i++) {
-		auto temp(v);
-		int time0 = clock();
-		Insertion(temp.begin(), temp.end());
-		int time1 = clock();
-		cout <<  time1 - time0 << "\t";
+
+void pq_test() {
+	/*MinPQ<int> pq{ std::greater<int>() };
+	pq.insert(5);
+	pq.insert(2);
+	pq.insert(6);
+	pq.insert(7);
+	pq.insert(9);
+
+	while (!pq.empty()) {
+		cout << pq.top() << " | ";
+		pq.pop();
+	}*/
+
+	IndexMinPQ<int, int> ipq;
+	ipq.insert(1, 2);
+	ipq.insert(2, 7);
+	ipq.insert(6, 5);
+	ipq.insert(4, 66);
+	ipq.insert(4, 6);
+	ipq.insert(6, 88);
+
+	while (!ipq.empty()) {
+		cout << ipq.top().key << " | " << ipq.top().value << "\n";
+		ipq.pop();
 	}
-	cout << endl;*/
+}

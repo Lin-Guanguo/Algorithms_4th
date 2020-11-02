@@ -13,19 +13,58 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\4.1">
+      <UniqueIdentifier>{94ec968e-511c-4324-ae16-973d8fc87b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\4.2">
+      <UniqueIdentifier>{b3119c06-d649-4200-8607-bc3acd6bae2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\4.3">
+      <UniqueIdentifier>{aceecfd0-d051-4344-aeb0-500678800bf1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DFS.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Graph.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="TopologicalSort.h">
+    <ClInclude Include="RunTimeTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="BFS.h">
+      <Filter>头文件\4.1</Filter>
+    </ClInclude>
+    <ClInclude Include="CC.h">
+      <Filter>头文件\4.1</Filter>
+    </ClInclude>
+    <ClInclude Include="DFS.h">
+      <Filter>头文件\4.1</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoColor.h">
+      <Filter>头文件\4.1</Filter>
+    </ClInclude>
+    <ClInclude Include="TopologicalSort.h">
+      <Filter>头文件\4.2</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthFirstOrder.h">
+      <Filter>头文件\4.2</Filter>
+    </ClInclude>
+    <ClInclude Include="Cycle.h">
+      <Filter>头文件\4.2</Filter>
+    </ClInclude>
+    <ClInclude Include="SCC.h">
+      <Filter>头文件\4.2</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitiveClosure.h">
+      <Filter>头文件\4.2</Filter>
+    </ClInclude>
+    <ClInclude Include="EWGraph.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LazyPrimMST.h">
+      <Filter>头文件\4.3</Filter>
+    </ClInclude>
+    <ClInclude Include="kruskalMST.h">
+      <Filter>头文件\4.3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -50,67 +50,67 @@ public:
 
 template<typename Value>
 class MinPQ {
-	std::vector<Value> pq;
+	std::vector<Value> itok;
 	std::function<bool(const Value& a, const Value& b)> less;
 public:
 	using size_type = typename std::vector<Value>::size_type;
-	MinPQ() :pq(), less(std::less<Value>()) {};
+	MinPQ() :itok(), less(std::less<Value>()) {};
 	MinPQ(const std::function<bool(const Value& a, const Value& b)>& less) : less(less) {};
 
 	void insert(const Value& that) {
-		pq.push_back(that);
-		swim(pq.size() - 1);
+		itok.push_back(that);
+		swim(itok.size() - 1);
 	}
 
 	const Value& top() {
-		return pq[0];
+		return itok[0];
 	}
 
 	void pop() {
-		if (pq.size() == 1) {
-			pq.pop_back();
+		if (itok.size() == 1) {
+			itok.pop_back();
 		}
 		else {
 			using std::swap;
-			swap(pq[0], *--pq.end());
-			pq.pop_back();
+			swap(itok[0], *--itok.end());
+			itok.pop_back();
 			sink(0);
 		}
 	}
 
 	bool empty() {
-		return pq.size() == 0;
+		return itok.size() == 0;
 	}
 
 	size_type size() {
-		return pq.size();
+		return itok.size();
 	}
 
 private:
 	void swim(size_type k) {
-		auto tmp = std::move(pq[k]);
+		auto tmp = std::move(itok[k]);
 		auto pri = (k - 1) / 2;
-		while (k > 0 && less(tmp, pq[pri])) {
-			pq[k] = std::move(pq[pri]);
+		while (k > 0 && less(tmp, itok[pri])) {
+			itok[k] = std::move(itok[pri]);
 			k = pri;
 			pri = (k - 1) / 2;
 		}
-		pq[k] = std::move(tmp);
+		itok[k] = std::move(tmp);
 	}
 
 	void sink(size_type k) {
-		auto tmp = std::move(pq[k]);
+		auto tmp = std::move(itok[k]);
 		size_type next = 2 * k + 1;
-		while (next < pq.size()) {
-			if (next != pq.size() - 1 && less(pq[next + 1], pq[next]))
+		while (next < itok.size()) {
+			if (next != itok.size() - 1 && less(itok[next + 1], itok[next]))
 				++next;
-			if (less(tmp, pq[next]))
+			if (less(tmp, itok[next]))
 				break;
-			pq[k] = std::move(pq[next]);
+			itok[k] = std::move(itok[next]);
 			k = next;
 			next = 2 * k + 1;
 		}
-		pq[k] = std::move(tmp);
+		itok[k] = std::move(tmp);
 	}
 
 };

@@ -14,6 +14,8 @@
 #include "EWGraph.h"
 #include "LazyPrimMST.h"
 
+#include "EWDiGraph.h"
+
 #include "RunTimeTest.h"
 
 using namespace std;
@@ -22,17 +24,13 @@ using namespace std;
 int main()
 {
 
-	ifstream in("..\\datas\\tinyEWG.txt");
-	EWGraph G(in);
+	ifstream in("..\\datas\\tinyEWD.txt");
+	EWDiGraph DG(in);
+	cout << DG << "\n\n\n";
 
-	cout << G;
 
-	LazyPrimMST res(G);
 
-	cout << "\n\n";
-	for (auto e : res.getMst()) {
-		cout << *e << ", ";
-	}
+
 
 	
 		

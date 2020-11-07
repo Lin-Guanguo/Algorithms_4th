@@ -145,6 +145,7 @@
     <ClInclude Include="Cycle.h" />
     <ClInclude Include="DepthFirstOrder.h" />
     <ClInclude Include="DFS.h" />
+    <ClInclude Include="EWDiGraph.h" />
     <ClInclude Include="EWGraph.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="kruskalMST.h" />

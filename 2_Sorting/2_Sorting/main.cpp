@@ -17,37 +17,41 @@
 #include <iterator>
 #include <algorithm>
 #include <queue>
+#include <list>
 
 void pq_test();
 
 using namespace std;
 int main() {
 	pq_test();
+	priority_queue<int> pq;
+	unordered_map<int, int> m;
+
 }
 
-
-
-
 void pq_test() {
-	/*MinPQ<int> pq{ std::greater<int>() };
-	pq.insert(5);
-	pq.insert(2);
-	pq.insert(6);
-	pq.insert(7);
-	pq.insert(9);
-
-	while (!pq.empty()) {
-		cout << pq.top() << " | ";
-		pq.pop();
-	}*/
+	default_random_engine E;
+	uniform_int_distribution<int> U(1,1000);
 
 	IndexMinPQ<int, int> ipq;
-	ipq.insert(1, 2);
-	ipq.insert(2, 7);
-	ipq.insert(6, 5);
-	ipq.insert(4, 66);
-	ipq.insert(4, 6);
-	ipq.insert(6, 88);
+	for (int i = 0; i < 100; ++i) {
+		ipq.insert(i, 100 - i);
+	}
+
+	while (!ipq.empty()) {
+		cout << ipq.top().key << " | " << ipq.top().value << "\n";
+		ipq.pop();
+	}
+
+	for (int i = 0; i < 100; ++i) {
+		ipq.insert(i, 100 - i);
+	}
+
+	cout << "\n\n\n";
+
+	for (int i = 0; i < 100; ++i) {
+		ipq.change(i, i);
+	}
 
 	while (!ipq.empty()) {
 		cout << ipq.top().key << " | " << ipq.top().value << "\n";

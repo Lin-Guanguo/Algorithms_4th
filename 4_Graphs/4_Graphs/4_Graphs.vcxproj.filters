@@ -66,6 +66,9 @@
     <ClInclude Include="kruskalMST.h">
       <Filter>头文件\4.3</Filter>
     </ClInclude>
+    <ClInclude Include="EWDiGraph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
